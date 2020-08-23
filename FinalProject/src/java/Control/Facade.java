@@ -2,6 +2,7 @@ package Control;
 
 import Modelo.DAO.UsuarioDAO;
 import Modelo.DTO.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -49,6 +50,18 @@ public class Facade {
         }
         return rta;
     }
-        
+        public String validacion(Usuario usu){
+        List<Usuario> lista= new ArrayList<>();
+        lista=listarU();
+        for(Usuario i: lista){
+            System.out.println(i.getNombres());
+            if(i.getNombres().equalsIgnoreCase(usu.getNombres()) && i.getApellidos().equalsIgnoreCase(usu.getApellidos())){
+            return "loginexitoso";
+            }else{
+            return "loginfallido";
+            }
+        }
+        return null;
+    }    
     
 }

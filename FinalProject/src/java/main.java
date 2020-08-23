@@ -12,7 +12,7 @@ import java.util.List;
 public class main {
     
     public static void main(String[] args) {
-        DetallePedidoDAO pp = new DetallePedidoDAO();
+       /* DetallePedidoDAO pp = new DetallePedidoDAO();
         Detalle_Pedido nuevo = new Detalle_Pedido();
         nuevo.setId_pedido(2);
         System.out.println("Holi");
@@ -20,7 +20,14 @@ public class main {
         lista=pp.read(nuevo);
         for(Detalle_Pedido i: lista){
             System.out.println(i.getId_pedido()+" "+i.getProductoId() +" "+i.getCant_und());
-        }
+        }*/
+        
+        UsuarioDAO pp= new UsuarioDAO();
+        List<Usuario> lista= new ArrayList<>();
+        lista=pp.getUsuarios();
+        for(Usuario i: lista){
+            System.out.println(i.getNombres()+" "+i.getApellidos());
+        }    
     }
     
 }

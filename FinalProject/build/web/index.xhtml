@@ -12,14 +12,14 @@
             <table>
                 <tr>
                     <td>Usuario:</td>
-                    <td><h:inputText value="#{loginUsuario.nombre}" required="true"/></td>                    
+                    <td><h:inputText value="#{usuario.nombres}" required="true"/></td>                    
                 </tr>
                 <tr>
                     <td>Contraseña:</td>
-                    <td><h:inputText value="#{loginUsuario.clave}" required="true"/></td>   
+                    <td><h:inputText value="#{usuario.apellidos}" required="true"/></td>   
                 </tr>
             </table>
-            <p><h:commandButton value="Enviar" action="#{loginUsuario.validacion}"/></p>
+            <p><h:commandButton value="Enviar" action="#{facade.validacion(usuario)}"/></p>
         </h:form>
     </h:body>
 </html>
