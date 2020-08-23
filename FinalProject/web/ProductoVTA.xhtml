@@ -15,28 +15,30 @@
                 </div>
             </div>
             <div class="row">
-               
+
                 <div class="card col-sm-6 col-md-6 col-lg-8">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>N° Id</th>
-                                <th>Nombre </th>
-                                <th>Descripcion</th>
+                                <th>Id</th>
                                 <th>Imagen</th>
-                                <th>Unidades</th>     
+                                <th>Nombre</th>
+                                <th>Descripcion</th>   
                                 <th>Valor</th>
+                                <th>Agregar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="objP" items="${facade.listarP()}">
                                 <tr>
                                     <td>${objP.id}</td>
+                                    <td><img src="${objP.imagen}" height="60vw" width="100vw"></img></td>
                                     <td>${objP.nombre}</td>
                                     <td>${objP.descripcion}</td>
-                                    <td><img src="${objP.imagen}" height="100vw"></img></td>
-                                    <td>${objP.unidades}</td>
                                     <td>${objP.valor}</td>
+                                    <td>
+                                        <a class="btn btn-warning" href="">Agregar</a>                                        
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
