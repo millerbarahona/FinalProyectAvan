@@ -4,38 +4,44 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
+        <meta http-equiv="Content-Type" content="text/html; ISO-8859-15"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+        <title>Parcial Avanzada</title>
+        <link rel="icon" type="image/png" href="favicon.png"></link> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></link>
+        <link rel="icon" type="image/png" href="favicon.png"></link>
     </h:head>
     <h:body>
-     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <link rel="stylesheet" type="text/css" href="CSS/EstiloProducto.css" media="screen">
-        <title>Product</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div id="navbarNav">
-                <ul>
-                    <li>
-                        <a  tyle="margin-left: 10px;border: none" class="active" class="btn btn-outline-ligth" href="#">Inicio</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">            
+            <div id="navbar-Nav" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" Style="margin-left: 10px;border: none" href="#" id="pp2"><label id="pp2">Inicio</label></a>
+                    </li >
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" Style="margin-left: 10px;border: none" href="" target="Frame" id="pp2">Producto</a>
                     </li>
-                    <li>
-                        <a  class="btn btn-outline-ligth" tyle="margin-left: 10px;border: none" href="ProductoCTO?menu=Producto&accion=Listar" target="Frame">Producto</a>  
-                    </li>
-                    <li>
-                        <a  class="btn btn-outline-ligth" tyle="margin-left: 10px;border: none" href="UsuarioCTO?menu=Usuario&accion=Listar" target="Frame">Usuario</a>  
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" Style="margin-left: 10px;border: none" href="" target="Frame" id="pp2">Usuarios</a>
                     </li>
                 </ul>
             </div>
+            <div class="dropdown">
+                <a href="#" class="btn btn-outline-light dropdown-toggle" style="margin-right: 8vw; border:  none" data-toggle="dropdown">Mi cuenta</a>
+                <div class="dropdown-menu text-center">
+                    <h:outputText value="#{usuario.nombres}"></h:outputText>
+                    
+                    <div class="dropdown-divide"></div>
+                    <a href="">Cerrar Sesion</a>
+                </div>
+            </div>
         </nav>
-        <div style="height: 530px">
-            <iframe name="Frame" style="height: 100%;width: 100%;boder: 2px"></iframe>
+        <div style="height: 88vh;">
+            <iframe name="Frame" style="height: 100%;width: 100%;border: 2px"></iframe>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    </body>
     </h:body>
 </html>
 
