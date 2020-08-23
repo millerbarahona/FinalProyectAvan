@@ -14,6 +14,15 @@ public class Detalle_Pedido implements Serializable{
     private int id_pedido,cant_und;
     private List<Producto> productos;
 
+    public Detalle_Pedido(int id_pedido, int cant_und, List<Producto> productos) {
+        this.id_pedido = id_pedido;
+        this.cant_und = cant_und;
+        this.productos = productos;
+    }
+
+    public Detalle_Pedido() {
+    }
+
     public int getId_pedido() {
         return id_pedido;
     }
