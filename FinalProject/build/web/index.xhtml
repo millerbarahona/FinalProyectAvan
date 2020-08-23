@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>Navegacion Dinamica</h2>
+            <h3>Por favor, ingrese usuario y contraseña</h3>
+            <table>
+                <tr>
+                    <td>Usuario:</td>
+                    <td><h:inputText value="#{loginUsuario.nombre}" required="true"/></td>                    
+                </tr>
+                <tr>
+                    <td>Contraseña:</td>
+                    <td><h:inputText value="#{loginUsuario.clave}" required="true"/></td>   
+                </tr>
+            </table>
+            <p><h:commandButton value="Enviar" action="#{loginUsuario.validacion}"/></p>
+        </h:form>
+    </h:body>
+</html>
+
