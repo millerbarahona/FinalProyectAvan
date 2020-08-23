@@ -17,10 +17,20 @@ public class Producto implements Serializable{
     private int id;
     private String nombre;
     private String descripcion;
+    private String imagen;
     private int unidades;
     private int valor;
     private int iva;
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    
     public int getId() {
         return id;
     }
@@ -69,22 +79,26 @@ public class Producto implements Serializable{
         this.iva = iva;
     }
 
-    public Producto(int id, String nombre, String descripcion, int unidades, int valor, int iva) {
+    public Producto(int id, String nombre, String descripcion, String imagen, int unidades, int valor, int iva) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.imagen = imagen;
         this.unidades = unidades;
         this.valor = valor;
         this.iva = iva;
     }
 
-    public Producto(String nombre, String descripcion, int unidades, int valor, int iva) {
+    public Producto(String nombre, String descripcion, String imagen, int unidades, int valor, int iva) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.imagen = imagen;
         this.unidades = unidades;
         this.valor = valor;
         this.iva = iva;
     }
+
+    
 
     @Override
     public String toString() {
