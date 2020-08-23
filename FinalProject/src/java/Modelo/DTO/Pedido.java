@@ -1,17 +1,19 @@
-
 package Modelo.DTO;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-
 @ManagedBean
 @RequestScoped
-public class Pedido implements Serializable{
-    private int id_pedido, id_usu, valor_total;
+public class Pedido implements Serializable {
+
+    private int id_pedido;
+    private int id_usu ;
+    private int valor_total ;
     private String observaciones, estado;
-    
+    Date fecha_hora;
 
     public int getId_pedido() {
         return id_pedido;
@@ -52,7 +54,22 @@ public class Pedido implements Serializable{
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
-    
+
+    public Date getFecha_hora() {
+        return fecha_hora;
+    }
+
+    public void setFecha_hora(Date fecha_hora) {
+        this.fecha_hora = fecha_hora;
+    }
+
+    public Pedido(int id_pedido, int id_usu, int valor_total, String observaciones, String estado, Date fecha_hora) {
+        this.id_pedido = id_pedido;
+        this.id_usu = id_usu;
+        this.valor_total = valor_total;
+        this.observaciones = observaciones;
+        this.estado = estado;
+        this.fecha_hora = fecha_hora;
+    }
+
 }

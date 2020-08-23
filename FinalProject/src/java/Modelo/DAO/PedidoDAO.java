@@ -1,5 +1,6 @@
 package Modelo.DAO;
 
+import Modelo.DTO.Pedido;
 import Modelo.DTO.Usuario;
 import conexion.ConexionMsql;
 import java.sql.PreparedStatement;
@@ -8,26 +9,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAO {
+public class PedidoDAO {
 
-    private static final String SQL_READ = "select * from tb_usuario where id_usu = ?";
-    private static final String SQL_READ_ALL = "select * from tb_usuario";
-    private static final String SQL_INSERT = "insert into tb_usuario (nombres,apellidos,tipo_docto,num_docto,ciudad_residencia,direccion,rol) VALUES(?,?,?,?,?,?,?)";
-    private static final String SQL_DELETE = "delete from tb_usuario where id_usu = ?";
-    private static final String SQL_UPDATE = "update tb_usuario set nombres = ?,apellidos = ?,tipo_docto = ?,num_docto = ?,ciudad_residencia = ?,direccion = ?,rol = ? where id =?";
+    private static final String SQL_READ = "select * from tb_usuario where id_pedido = ?";
+    private static final String SQL_READ_ALL = "select * from tb_pedido";
+    private static final String SQL_INSERT = "insert into tb_usuario (id_usu,fecha_hora,valor_total,observaciones,estado) VALUES(?,?,?,?,?)";
+    private static final String SQL_DELETE = "delete from tb_usuario where id_pedido = ?";
+    private static final String SQL_UPDATE = "update tb_usuario set id_usu = ?,fecha_hora = ?,valor_total = ?,observaciones = ?,estado = ? where id =?";
     private static final ConexionMsql cnx = ConexionMsql.getInstance();
 
-    public boolean create(Usuario nuevo) {
+    public boolean create(Pedido nuevo) {
         PreparedStatement ps;
         try {
             ps = cnx.getcnn().prepareStatement(SQL_INSERT);
-            ps.setString(1, nuevo.getNombres());
-            ps.setString(2, nuevo.getApellidos());
-            ps.setString(3, nuevo.getTipo_docto());
-            ps.setString(4, nuevo.getNumero_docto());
-            ps.setString(5, nuevo.getCiudad_residencia());
-            ps.setString(6, nuevo.getDireccion());
-            ps.setString(7, nuevo.getRol());
+            ps.setInt(1, nuevo.getId_usu());
+            ps.setDate(2, nuevo.getFecha_hora());
+            ps.setInt(3, nuevo.getValor_total());
+            ps.setString(4, nuevo.getObservaciones());
+            ps.setString(5, nuevo.getEstado());
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("Se agregó");
@@ -41,17 +40,17 @@ public class UsuarioDAO {
         return false;
     }
 
-    public List<Usuario> getUsuarios() {
-        List<Usuario> listusu = null;
+    public List<Pedido> getPedidos() {
+        List<Pedido> listPedi = null;
         if (cnx.getcnn() != null) {
             PreparedStatement psmt;
             try {
                 psmt = cnx.getcnn().prepareStatement(SQL_READ_ALL);
                 ResultSet rs = psmt.executeQuery();
-                listusu = new ArrayList<>();
+                listPedi = new ArrayList<>();
                 while (rs.next()) {
-                    Usuario aux = new Usuario(rs.getInt("id_usu"), rs.getString("nombres"), rs.getString("apellidos"), rs.getString("tipo_docto"), rs.getString("num_docto"), rs.getString("ciudad_residencia"), rs.getString("direccion"), rs.getString("rol"));
-                    listusu.add(aux);
+                    Pedido aux = new Pedido(rs.getInt("id_pedido"), rs.getInt("id_usu"), rs.getInt("valor_total"), rs.getString("observaciones"), rs.getString("estado"), rs.getDate("fecha_hora"));
+                    listPedi.add(aux);
                 }
 
             } catch (SQLException ex) {
@@ -60,14 +59,14 @@ public class UsuarioDAO {
                 cnx.cerrarConexion();
             }
         }
-        return listusu;
+        return listPedi;
     }
 
-    public boolean deleteU(Usuario item) {
+    public boolean deleteP(Pedido item) {
         PreparedStatement ps;
         try {
             ps = cnx.getcnn().prepareStatement(SQL_DELETE);
-            ps.setInt(1, item.getId_usu());
+            ps.setInt(1, item.getId_pedido());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -79,18 +78,16 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean update(Usuario upt) {
+    public boolean update(Pedido upt) {
         PreparedStatement ps;
         try {
             ps = cnx.getcnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, upt.getNombres());
-            ps.setString(2, upt.getApellidos());
-            ps.setString(3, upt.getTipo_docto());
-            ps.setString(4, upt.getNumero_docto());
-            ps.setString(5, upt.getCiudad_residencia());
-            ps.setString(6, upt.getDireccion());
-            ps.setString(7, upt.getRol());
-            ps.setInt(5, upt.getId_usu());
+            ps.setInt(1, upt.getId_usu());
+            ps.setDate(2, upt.getFecha_hora());
+            ps.setInt(3, upt.getValor_total());
+            ps.setString(4, upt.getObservaciones());
+            ps.setString(5, upt.getEstado());
+            ps.setInt(5, upt.getId_pedido());
 
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -103,16 +100,15 @@ public class UsuarioDAO {
         }
         return false;
     }
-
-    public Usuario read(Usuario filter) {
-        Usuario objRes = null;
+    public Pedido read(Pedido filter) {
+        Pedido objRes = null;
         PreparedStatement psmt;
         try {
             psmt = cnx.getcnn().prepareStatement(SQL_READ);
             psmt.setInt(1, filter.getId_usu());
             ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
-                objRes = new Usuario(rs.getInt("id_usu"), rs.getString("nombres"), rs.getString("apellidos"), rs.getString("tipo_docto"), rs.getString("num_docto"), rs.getString("ciudad_residencia"), rs.getString("direccion"), rs.getString("rol"));
+                objRes = new Pedido(rs.getInt("id_pedido"), rs.getInt("id_usu"), rs.getInt("valor_total"), rs.getString("observaciones"), rs.getString("estado"), rs.getDate("fecha_hora"));
             }
         } catch (SQLException ex) {
             System.out.println("Usuario no encontrado: " + ex.getMessage());
