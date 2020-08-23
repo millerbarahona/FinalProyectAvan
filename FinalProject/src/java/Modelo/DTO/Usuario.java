@@ -8,8 +8,8 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class Usuario implements Serializable{
-    int id_usu;
-    String nombres, apellidos, tipo_docto,numero_docto,ciudad_residencia,direccion,rol;
+    private int id_usu;
+    private String nombres, apellidos, tipo_docto,numero_docto,ciudad_residencia,direccion,rol;
     public Usuario() {
     }
 

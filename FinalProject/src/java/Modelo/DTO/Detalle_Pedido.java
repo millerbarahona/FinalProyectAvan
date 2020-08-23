@@ -11,8 +11,8 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class Detalle_Pedido implements Serializable{
         
-    int id_pedido,cant_und;
-    List<Producto>productos;
+    private int id_pedido,cant_und;
+    private List<Producto> productos;
 
     public int getId_pedido() {
         return id_pedido;

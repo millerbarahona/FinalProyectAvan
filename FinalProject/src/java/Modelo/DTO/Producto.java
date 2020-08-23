@@ -5,13 +5,14 @@
  */
 package Modelo.DTO;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 
 @ManagedBean
 @RequestScoped
-public class Producto {
+public class Producto implements Serializable{
     
     private int id;
     private String nombre;
@@ -67,6 +68,30 @@ public class Producto {
     public void setIva(int iva) {
         this.iva = iva;
     }
+
+    public Producto(int id, String nombre, String descripcion, int unidades, int valor, int iva) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.unidades = unidades;
+        this.valor = valor;
+        this.iva = iva;
+    }
+
+    public Producto(String nombre, String descripcion, int unidades, int valor, int iva) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.unidades = unidades;
+        this.valor = valor;
+        this.iva = iva;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+    
+    
     public Producto() {
     }
     
