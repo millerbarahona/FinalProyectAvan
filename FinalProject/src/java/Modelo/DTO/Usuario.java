@@ -76,5 +76,16 @@ public class Usuario implements Serializable{
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+    public Usuario(int id_usu, String nombres, String apellidos, String tipo_docto, String numero_docto, String ciudad_residencia, String direccion, String rol) {
+        this.id_usu = id_usu;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.tipo_docto = tipo_docto;
+        this.numero_docto = numero_docto;
+        this.ciudad_residencia = ciudad_residencia;
+        this.direccion = direccion;
+        this.rol = rol;
+    }
     
 }
