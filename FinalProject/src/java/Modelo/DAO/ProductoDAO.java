@@ -70,7 +70,7 @@ public class ProductoDAO {
      public boolean dalete(Producto item){
         PreparedStatement ps;
         try {
-            ps= cnx.getcnn().prepareStatement(SQL_UPDATE);
+            ps= cnx.getcnn().prepareStatement(SQL_DELETE);
             ps.setInt(1, item.getId());
             if(ps.executeUpdate()>0){
                 return true;
@@ -104,14 +104,17 @@ public class ProductoDAO {
         return false;
     }
     
-    public Producto read(){
+    public Producto read(Producto index){
         Producto pro= null;
         PreparedStatement psnt;
         
         if(cnx!=null){
         try {
-            psnt= cnx.getcnn().prepareStatement(SQL_READ_ALL);
+            psnt= cnx.getcnn().prepareStatement(SQL_READ);
+            System.out.println(index.getId());
+            psnt.setInt(1, index.getId());
             ResultSet rs = psnt.executeQuery();
+            
             if (rs.next()) {
                 pro= new Producto(rs.getInt("id_pro"),
                 rs.getString("nombre_pro"), rs.getString("descripcion_pro"),

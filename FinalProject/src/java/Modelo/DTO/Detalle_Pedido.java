@@ -12,17 +12,17 @@ import javax.faces.bean.RequestScoped;
 public class Detalle_Pedido implements Serializable{
         
     private int id_pedido,cant_und;
-    private List<Producto> productos;
+    private int productoId;
 
-    public Detalle_Pedido(int id_pedido, int cant_und, List<Producto> productos) {
+    public Detalle_Pedido(int id_pedido,int productoId, int cant_und ) {
         this.id_pedido = id_pedido;
         this.cant_und = cant_und;
-        this.productos = productos;
+        this.productoId = productoId;
     }
 
     public Detalle_Pedido() {
     }
-
+    
     public int getId_pedido() {
         return id_pedido;
     }
@@ -39,12 +39,14 @@ public class Detalle_Pedido implements Serializable{
         this.cant_und = cant_und;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public int getProductoId() {
+        return productoId;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setProductoId(int productoId) {
+        this.productoId = productoId;
     }
+
+   
     
 }
