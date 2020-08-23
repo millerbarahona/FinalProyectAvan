@@ -53,8 +53,10 @@ public class Facade {
         public String validacion(Usuario usu){
         List<Usuario> lista= new ArrayList<>();
         lista=listarU();
+            System.out.println(lista.size());
         for(Usuario i: lista){
-            System.out.println(i.getNombres());
+            System.out.println("hola");
+            System.out.println(usu.getNombres());
             if(i.getNombres().equalsIgnoreCase(usu.getNombres()) && i.getApellidos().equalsIgnoreCase(usu.getApellidos())){
             return "loginexitoso";
             }else{
