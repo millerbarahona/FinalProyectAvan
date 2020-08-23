@@ -9,6 +9,7 @@ public class main {
         UsuarioDAO pp = new UsuarioDAO();
         Usuario nuevo = new Usuario("miller", "barahona", "cedula", "100134", "Bogota", "tv73...", "Admin :3"); 
         System.out.println("Holi");
+        pp.create(nuevo);
     }
     
 }
