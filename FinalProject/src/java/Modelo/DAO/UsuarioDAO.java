@@ -1,6 +1,7 @@
 package Modelo.DAO;
 
 import Modelo.DTO.Usuario;
+import conexion.ConexionMsql;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
