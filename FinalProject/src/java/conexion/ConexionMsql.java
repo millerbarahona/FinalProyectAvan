@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package conexion;
 
 import java.sql.Connection;
@@ -11,35 +6,30 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author ASUS
- */
 public class ConexionMsql {
+
+    public static Connection cnx = null;
     public static ConexionMsql instance;
-    private Connection cnn;
-    
-    private ConexionMsql(){
-        try {
+
+    private ConexionMsql() {
+        try{
             Class.forName("com.mysql.jdbc.Driver");
-            cnn= DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_pedidos","root","");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConexionMsql.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionMsql.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+            cnx= DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_pedidos","root","");
+        } catch (ClassNotFoundException | SQLException ex) {
+                System.out.println("Erro conectar bd bd: "+ex.getMessage());
+            }
     }
     public static synchronized ConexionMsql getInstance(){
         if(instance==null){
-            instance= new ConexionMsql();
+            instance=new ConexionMsql();
         }
         return instance;
     }
+    
     public Connection getcnn(){
-        return cnn;
+        return cnx;
     }
     public void cerrarConexion(){
-        instance= null;
+        instance=null;
     }
 }
