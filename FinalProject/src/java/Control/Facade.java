@@ -1,14 +1,54 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Control;
 
-/**
- *
- * @author Usuario
- */
+import Modelo.DAO.UsuarioDAO;
+import Modelo.DTO.Usuario;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@ManagedBean
+@RequestScoped
 public class Facade {
+
+    public boolean crearUsuario(Usuario objP) {
+        boolean rta = false;
+        if (objP != null) {
+            UsuarioDAO dao = new UsuarioDAO();
+            rta = dao.create(objP);
+        }
+        return rta;
+    }
+
+    public List<Usuario> listarU() {
+        List<Usuario> list = null;
+        UsuarioDAO dao = new UsuarioDAO();
+        list = dao.getUsuarios();
+        return list;
+    }
+
+    public Usuario verUsuario(Usuario item) {
+        Usuario objDTO;
+        UsuarioDAO objDAO = new UsuarioDAO();
+        objDTO = objDAO.read(item);
+        return objDTO;
+    }
+
+    public boolean actualizarU(Usuario objP) {
+        boolean rta = false;
+        if (objP != null) {
+            UsuarioDAO dao = new UsuarioDAO();
+            rta = dao.update(objP);
+        }
+        return rta;
+    }
+        public boolean eliminarU (Usuario objP){
+        boolean rta=false;
+        if(objP!=null){
+            UsuarioDAO dao= new UsuarioDAO();
+            rta=dao.deleteU(objP);
+        }
+        return rta;
+    }
+        
     
 }
