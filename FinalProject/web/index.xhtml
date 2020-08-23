@@ -6,7 +6,21 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <h2>Navegacion Dinamica</h2>
+            <h3>Por favor, ingrese usuario y contraseña</h3>
+            <table>
+                <tr>
+                    <td>Usuario:</td>
+                    <td><h:inputText value="#{loginUsuario.nombre}" required="true"/></td>                    
+                </tr>
+                <tr>
+                    <td>Contraseña:</td>
+                    <td><h:inputText value="#{loginUsuario.clave}" required="true"/></td>   
+                </tr>
+            </table>
+            <p><h:commandButton value="Enviar" action="#{loginUsuario.validacion}"/></p>
+        </h:form>
     </h:body>
 </html>
 
