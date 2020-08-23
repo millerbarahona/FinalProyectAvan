@@ -1,6 +1,8 @@
 package Control;
 
+import Modelo.DAO.ProductoDAO;
 import Modelo.DAO.UsuarioDAO;
+import Modelo.DTO.Producto;
 import Modelo.DTO.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,28 +44,71 @@ public class Facade {
         }
         return rta;
     }
-        public boolean eliminarU (Usuario objP){
-        boolean rta=false;
-        if(objP!=null){
-            UsuarioDAO dao= new UsuarioDAO();
-            rta=dao.deleteU(objP);
+
+    public boolean eliminarU(Usuario objP) {
+        boolean rta = false;
+        if (objP != null) {
+            UsuarioDAO dao = new UsuarioDAO();
+            rta = dao.deleteU(objP);
         }
         return rta;
     }
-        public String validacion(Usuario usu){
-        List<Usuario> lista= new ArrayList<>();
-        lista=listarU();
-            System.out.println(lista.size());
-        for(Usuario i: lista){
+
+    public boolean crearProducto(Producto objP) {
+        boolean rta = false;
+        if (objP != null) {
+            ProductoDAO dao = new ProductoDAO();
+            rta = dao.create(objP);
+        }
+        return rta;
+    }
+
+    public List<Producto> listarP() {
+        List<Producto> list = null;
+        ProductoDAO dao = new ProductoDAO();
+        list = dao.readAll();
+        return list;
+    }
+
+    public Producto verProducto(Producto item) {
+        Producto objDTO;
+        ProductoDAO objDAO = new ProductoDAO();
+        objDTO = objDAO.read(item);
+        return objDTO;
+    }
+
+    public boolean actualizarP(Producto objP) {
+        boolean rta = false;
+        if (objP != null) {
+            ProductoDAO dao = new ProductoDAO();
+            rta = dao.update(objP);
+        }
+        return rta;
+    }
+
+    public boolean eliminarP(Producto objP) {
+        boolean rta = false;
+        if (objP != null) {
+            ProductoDAO dao = new ProductoDAO();
+            rta = dao.dalete(objP);
+        }
+        return rta;
+    }
+
+    public String validacion(Usuario usu) {
+        List<Usuario> lista = new ArrayList<>();
+        lista = listarU();
+        System.out.println(lista.size());
+        for (Usuario i : lista) {
             System.out.println("hola");
             System.out.println(usu.getNombres());
-            if(i.getNombres().equalsIgnoreCase(usu.getNombres()) && i.getApellidos().equalsIgnoreCase(usu.getApellidos())){
-            return "loginexitoso";
-            }else{
-            return "loginfallido";
+            if (i.getNombres().equalsIgnoreCase(usu.getNombres()) && i.getApellidos().equalsIgnoreCase(usu.getApellidos())) {
+                return "ProductoVTA";
+            } else {
+                return "loginfallido";
             }
         }
         return null;
-    }    
-    
+    }
+
 }
